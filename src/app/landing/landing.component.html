@@ -10,7 +10,9 @@
                 <h1 id="welcomeTitle">Welcome</h1>
             </div>
             <div class="container-fluid" id="signinContainer">
-                <h5>Sign-in / Register</h5>
+                <a routerLink="/sign-in" routerLinkActive="active" ariaCurrentWhenActive="page"><h5>Sign-In</h5></a>
+                <h5>&nbsp;/&nbsp;</h5>
+                <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page"><h5>Register</h5></a>
             </div>
         </div>
     </div>
@@ -20,3 +22,5 @@
         </div>
     </div>
 </div>
+
+<router-outlet></router-outlet>
