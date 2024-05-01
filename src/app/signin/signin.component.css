@@ -16,6 +16,7 @@
     width: 40vw;
     background-color: lightblue;
     padding: 5%;
+    position: relative;
 }
 
 #buttonContainer {
@@ -41,4 +42,10 @@
 
 #loginError {
     margin-bottom: 5%;
+}
+
+#backButton {
+    position: absolute;
+    left: 4%;
+    top: 4%;
 }
