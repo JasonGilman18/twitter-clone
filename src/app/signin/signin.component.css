@@ -1,0 +1,44 @@
+#mainContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#headerContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+#boxContainer {
+    height: 65vh;
+    width: 40vw;
+    background-color: lightblue;
+    padding: 5%;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submitButton {
+    width: 60%;
+}
+
+.form-group {
+    margin-bottom: 5%;
+}
+
+#emailError, #passwordError, #loginError {
+    margin-top: 2%;
+    background-color: lightcoral;
+    padding: 2%;
+    border-radius: 4px;
+}
+
+#loginError {
+    margin-bottom: 5%;
+}

@@ -1,3 +1,27 @@
-<p>signin works!</p>
+<div class="container-fluid" id="mainContainer">
+    <div class="container" id="boxContainer">
+        <div class="container-fluid" id="headerContainer">
+            <h1 id="signinHeader">Sign-In</h1>
+        </div>
+        <div class="container-fluid" id="formContainer">
+            <form #signinForm="ngForm" (ngSubmit)="signinSubmit()" class="needs-validated">
+                <div class="form-group">
+                    <label for="emailInput"><h5>Email Address:</h5></label>
+                    <input type="email" class="form-control" placeholder="email" id="emailInput" required [(ngModel)]="emailAddress" name="emailAddress">
+                    <div *ngIf="emailAddressError" class="container" id="emailError">Email Address is Required</div>
+                </div>
+                <div class="form-group">
+                    <label for="passwordInput"><h5>Password:</h5></label>
+                    <input type="password" class="form-control" placeholder="password" id="passwordInput" required [(ngModel)]="password" name="password">
+                    <div *ngIf="passwordError" class="container" id="passwordError">Password is Required</div>
+                </div>
+                <div *ngIf="loginError" class="container" id="loginError">Either the email address or password is invalid</div>
+                <div class="container-fluid" id="buttonContainer">
+                    <button type="submit" class="btn btn-primary" id="submitButton" (click)="signinSubmit()">Sign-In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <router-outlet></router-outlet>
