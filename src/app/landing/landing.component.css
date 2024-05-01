@@ -1,0 +1,46 @@
+#header {
+    height: 10vh;
+    position: relative;
+}
+
+#headerTitle {
+    position: absolute;
+    left: 7%;
+    top: 25%;
+}
+
+#main {
+    height: 85vh;
+}
+
+#mainContainer {
+    position: relative;
+    height: 100%;
+}
+
+#welcomeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+
+#welcomeTitle {
+    font-size: 12vw;
+}
+
+#signinContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer {
+    height: 5vh;
+    position: relative;
+}
+
+#footerTitle {
+    position: absolute;
+    right: 5%;
+}
