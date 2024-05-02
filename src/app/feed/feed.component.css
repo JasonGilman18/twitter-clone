@@ -1,14 +1,67 @@
 #mainContainer {
     height: 100vh;
+    overflow: hidden;
+}
+
+#headerContainer {
+    min-height: 10vh;
+    width: 60vw;
+    background-color: lightblue;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+}
+
+#authorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#authorPhotoArea {
+    border-radius: 100%;
+    background-color: lightgrey;
+    height: 3.5rem;
+    width: 5rem;
+    margin: 0px;
+    margin-right: .8rem;
+}
+
+#authorName {
+    width: 25rem;
+}
+
+#titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#feedTitle {
+    margin-bottom: 0px;
+}
+
+#logoutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#feedContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #boxContainer {
-    height: 75vh;
+    height: 80vh;
     width: 40vw;
     background-color: lightblue;
     padding: 5%;
     position: relative;
+    overflow-y: auto;
+    border-radius: 5px;
 }

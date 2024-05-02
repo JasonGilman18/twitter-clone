@@ -1,6 +1,22 @@
 <div class="container-fluid" id="mainContainer">
-    <div class="container" id="boxContainer">
-        <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
+    <div class="container-fluid">
+        <div class="container" id="headerContainer">
+            <div class="container" id="authorContainer">
+                <div class="container" id="authorPhotoArea"></div>
+                <a routerLink="{{'/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>author name</h5></a>
+            </div>
+            <div class="container" id="titleContainer">
+                <h1 id="feedTitle">Your Feed</h1>
+            </div>
+            <div class="container" id="logoutContainer">
+                <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><h5>Logout</h5></a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="feedContainer">
+        <div class="container" id="boxContainer">
+            <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
+        </div>
     </div>
 </div>
 
