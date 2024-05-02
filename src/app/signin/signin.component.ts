@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { User } from '../model/user';
+import { UserDataService } from '../model/user.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-signin',
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLinkActive, RouterLink, FormsModule],
+  providers: [UserDataService],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
@@ -20,10 +21,9 @@ export class SigninComponent {
   passwordError: boolean = false;
   loginError: boolean = false;
 
-  users: User[] = [new User(0, "admin", "admin", "admin@admin.com", "password", "", 0, 0)]
-
   constructor(
-    private router: Router
+    private router: Router,
+    private userDataService: UserDataService
   ) {}
 
   signinSubmit() {
@@ -37,18 +37,13 @@ export class SigninComponent {
       this.passwordError = true;
 
     if (!this.emailAddressError && !this.passwordError) {
-      var validLogin = false;
-      this.users.forEach((user) => {
+      this.userDataService.getUsers().forEach((user) => {
         if (user.email == this.emailAddress && user.password == this.password) {
-          validLogin = true;
-          return;
+          this.router.navigate(["feed", user.id]);
         }
       });
-  
-      if (validLogin)
-        this.router.navigate(["register"]);
-      else
-        this.loginError = true;
+      this.loginError = true;  
     }
   }
+  
 }

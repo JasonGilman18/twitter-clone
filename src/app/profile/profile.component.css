@@ -1,0 +1,14 @@
+#mainContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boxContainer {
+    min-height: 65vh;
+    width: 40vw;
+    background-color: lightblue;
+    padding: 5%;
+    position: relative;
+}
