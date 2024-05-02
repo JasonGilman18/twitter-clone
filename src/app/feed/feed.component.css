@@ -6,7 +6,7 @@
 }
 
 #boxContainer {
-    min-height: 65vh;
+    height: 75vh;
     width: 40vw;
     background-color: lightblue;
     padding: 5%;
