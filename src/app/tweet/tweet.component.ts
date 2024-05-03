@@ -82,9 +82,11 @@ export class TweetComponent implements OnInit {
 
   commentSubmit() {
     if (this.commentInput != "") {
-      let newComment: CommentDetails = new CommentDetails(this.user.id, this.commentInput);
-      this.tweet.addComment(newComment);
-      this.commentInput = "";
+      if (this.commentInput.length <= 280) {
+        let newComment: CommentDetails = new CommentDetails(this.user.id, this.commentInput);
+        this.tweet.addComment(newComment);
+        this.commentInput = "";
+      }
     }
   }
 

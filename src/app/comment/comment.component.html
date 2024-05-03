@@ -1,4 +1,4 @@
 <div class="container-fluid" id="commentBox">
-    <p><b>{{commentAuthor.firstName + " " + commentAuthor.lastName}}</b></p>
+    <a routerLink="{{'/profile/' + commentAuthor.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><p>{{commentAuthor.firstName + " " + commentAuthor.lastName}}</p></a>
     <p>{{comment.text}}</p>
 </div>
