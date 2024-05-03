@@ -20,7 +20,7 @@ export class TweetDataService {
         return TweetDataService.tweets;
     }
 
-    addTweets(newTweet: TweetDetails) {
+    addTweet(newTweet: TweetDetails) {
         TweetDataService.tweets.push(newTweet);
     }
 

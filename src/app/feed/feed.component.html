@@ -9,9 +9,13 @@
                 <h1 id="feedTitle">Your Feed</h1>
             </div>
             <div class="container" id="logoutContainer">
-                <div class="container" id="newTweetBox">
-                    <input type="text" placeholder="New Tweet">
-                    <button>Tweet</button>
+                <div #newTweetBox class="{{newTweetOpen ? 'container newTweetBoxFocused' : 'container newTweetBoxUnfocused'}}">
+                    <textarea [(ngModel)]="newTweetInput" name="newTweetInput" (focus)="newTweetFocused()" class="{{newTweetOpen ? 'form-control textareaFocused' : 'form-control textareaUnfocused'}}" placeholder="What's up?" style="resize: none;"></textarea>
+                    <p [ngStyle]="{display: newTweetError ? 'block': 'none'}" class="newTweetErrorMsg">{{newTweetErrorMsg}}</p>
+                    <div class="container" style="display: flex;justify-content: space-evenly;align-items: center;margin: 0px;padding: 0px;">
+                        <button (click)="cancelTweet()" [ngStyle]="{display: newTweetOpen ? 'block': 'none'}" class="btn btn-primary">Cancel</button>
+                        <button (click)="publishTweet()" class="btn btn-primary">Tweet</button>
+                    </div>
                 </div>
                 <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><h5>Logout</h5></a>
             </div>

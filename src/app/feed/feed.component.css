@@ -4,7 +4,7 @@
 }
 
 #headerContainer {
-    min-height: 10vh;
+    min-height: 14vh;
     width: 60vw;
     background-color: lightblue;
     margin-bottom: 2rem;
@@ -47,7 +47,7 @@
 #logoutContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 #feedContainer {
@@ -66,17 +66,48 @@
     border-radius: 5px;
 }
 
-#newTweetBox {
+.container.newTweetBoxUnfocused {
     height: fit-content;
     width: fit-content;
     padding: 1rem;
     background-color: aliceblue;
     border-radius: 5px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 1rem;
 }
 
-#newTweetBox input {
-    width: 6rem;
+.container.newTweetBoxFocused {
+    padding: 1rem;
+    background-color: aliceblue;
+    border-radius: 5px;
+    position: fixed;
+    top: 4.75rem;
+    right: 28.5rem;
+    height: fit-content;
+    width: 30vw;
+    z-index: 99;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: top 5s, right 5s;
+    text-align: start;
+}
+
+.form-control.textareaFocused {
+    border-radius: 5px;
+    height: 10vh;
+    margin-bottom: 1rem;
+}
+
+.form-control.textareaUnfocused {
     margin-right: 1rem;
+    border-radius: 5px;
+}
+
+.newTweetErrorMsg {
+    color: lightcoral;
 }
