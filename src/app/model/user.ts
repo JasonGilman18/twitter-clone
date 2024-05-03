@@ -8,8 +8,8 @@ export class User {
     public email: string;
     public password: string;
     public bio: string;
-    public followerCount: number;
-    public followingCount: number;
+    public followers: number[];
+    public following: number[];
     public tweets: number[];
     public likedTweets: number[];
     public retweets: number[];
@@ -29,8 +29,8 @@ export class User {
       this.email = temail;
       this.password = tpassword;
       this.bio = tbio;
-      this.followerCount = 0;
-      this.followingCount = 0;
+      this.followers = [];
+      this.following = [];
       this.likedTweets = [];
       this.retweets = [];
     }

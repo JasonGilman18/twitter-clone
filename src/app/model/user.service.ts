@@ -28,6 +28,38 @@ export class UserDataService {
                 user.lastName = newLastName;
                 user.bio = newBio;
             }
-        })
+        });
+    }
+
+    addToFollowing(id: number, followingId: number) {
+        UserDataService.users.forEach(user => {
+            if (user.id == id) {
+                user.following.push(followingId);
+            }
+        });
+    }
+
+    removeFromFollowing(id: number, followingId: number) {
+        UserDataService.users.forEach(user => {
+            if (user.id == id) {
+                user.following.splice(user.following.findIndex(i => i == followingId), 1);
+            }
+        });
+    }
+
+    addToFollowers(id: number, followerId: number) {
+        UserDataService.users.forEach(user => {
+            if (user.id == id) {
+                user.followers.push(followerId);
+            }
+        });
+    }
+
+    removeFromFollowers(id: number, followerId: number) {
+        UserDataService.users.forEach(user => {
+            if (user.id == id) {
+                user.followers.splice(user.followers.findIndex(i => i == followerId));
+            }
+        });
     }
 }

@@ -1,14 +1,15 @@
 <div class="container-fluid" id="mainContainer">
     <div class="container" id="profileContainer">
         <button (click)="editClicked()" class="iconButton" id="editButton" [ngStyle]="{display: editMode || !profileIsUsers ? 'none' : 'block'}"><i class="fa fa-edit"></i></button>
-        <button (click)="editClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: profileIsUsers ? 'none' : 'block'}">Follow</button>
+        <button (click)="followClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: profileIsUsers||follower ? 'none' : 'block'}">Follow</button>
+        <button (click)="unfollowClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: !profileIsUsers&&follower ? 'block' : 'none'}">Unfollow</button>
         <div class="container-fluid" id="authorArea">
             <div class="container" id="authorPhotoArea"></div>
         </div>
         <div class="container-fluid" id="profileInfo" [ngStyle]="{display: editMode ? 'none' : 'flex'}">
             <div class="container" id="follwerArea">
-                <p>{{user.followerCount}}&nbsp;&nbsp;<b>followers</b></p>
-                <p>{{user.followingCount}}&nbsp;&nbsp;<b>following</b></p>
+                <p>{{user.followers.length}}&nbsp;&nbsp;<b>followers</b></p>
+                <p>{{user.following.length}}&nbsp;&nbsp;<b>following</b></p>
             </div>
             <h1><b>{{user.firstName + " " + user.lastName}}</b></h1>
             <h4>{{user.bio}}</h4>
@@ -41,10 +42,10 @@
         </div>
     </div>
     <div class="container" id="boxContainer">
-        <button (click)="youTweetsClicked()" class="iconButton" id="yourTweetsButton"><i class="fa fa-user"></i></button>
-        <button (click)="youLikesClicked()" class="iconButton" id="yourLikesButton"><i class="fa fa-heart"></i></button>
-        <button (click)="youRetweetsClicked()" class="iconButton" id="yourRetweetsButton"><i class="fa fa-retweet"></i></button>
-        <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet" [user]="user"></app-tweet>
+        <button (click)="youTweetsClicked()" class="iconButton" id="yourTweetsButton" [ngStyle]="{color: displayTweetType=='your'?'grey':'black'}"><i class="fa fa-user"></i></button>
+        <button (click)="youLikesClicked()" class="iconButton" id="yourLikesButton" [ngStyle]="{color: displayTweetType=='likes'?'grey':'black'}"><i class="fa fa-heart"></i></button>
+        <button (click)="youRetweetsClicked()" class="iconButton" id="yourRetweetsButton" [ngStyle]="{color: displayTweetType=='retweets'?'grey':'black'}"><i class="fa fa-retweet"></i></button>
+        <app-tweet *ngFor="let tweet of displayTweets" [tweet]="tweet" [user]="user"></app-tweet>
     </div>
 </div>
 

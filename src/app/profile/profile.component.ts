@@ -20,8 +20,8 @@ export class ProfileComponent implements OnInit {
   
   id: string;
   user: User;
-  tweets: TweetDetails[];
   profileIsUsers: boolean;
+  follower: boolean;
 
   editMode: boolean;
   editFirstName: string;
@@ -30,9 +30,11 @@ export class ProfileComponent implements OnInit {
   firstNameError: boolean;
   lastNameError: boolean;
 
-  showYourTweets: boolean;
-  showLikes: boolean;
-  showRetweets: boolean;
+  yourTweets: TweetDetails[];
+  likedTweets: TweetDetails[];
+  retweetedTweets: TweetDetails[];
+  displayTweets: TweetDetails[];
+  displayTweetType: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,13 +51,17 @@ export class ProfileComponent implements OnInit {
       this.user = this.userDataService.getUser(Number.parseInt(param))!;
       this.id = this.route.snapshot.paramMap.get("id")!;
       this.profileIsUsers = Number.parseInt(this.id) == this.user.id;
+      if (this.profileIsUsers)
+        this.follower = false;
+      else {
+        this.follower = this.userDataService.getUser(Number.parseInt(this.id))?.following.includes(this.user.id)!;
+      }
 
-      this.tweets = [];
-      let userTweets = this.tweetDataService.getTweets().filter(tweet => tweet.authorId == this.user.id);
-      let likedTweets = this.tweetDataService.getTweets().filter(tweet => this.user.likedTweets.includes(tweet.id));
-      let retweetTweets = this.tweetDataService.getTweets().filter(tweet => this.user.retweets.includes(tweet.id));
-      this.tweets = userTweets.concat(likedTweets, retweetTweets);
-      this.tweets = this.tweets.sort((n1, n2) => n1.id-n2.id);
+      this.yourTweets = this.tweetDataService.getTweets().filter(tweet => tweet.authorId == this.user.id);
+      this.likedTweets = this.tweetDataService.getTweets().filter(tweet => this.user.likedTweets.includes(tweet.id));
+      this.retweetedTweets = this.tweetDataService.getTweets().filter(tweet => this.user.retweets.includes(tweet.id));
+      this.displayTweets = this.yourTweets;
+      this.displayTweetType = "your";
     }
   }
 
@@ -87,16 +93,31 @@ export class ProfileComponent implements OnInit {
     this.editMode = false;
   }
 
-  youTweetsClicked() {
+  followClicked() {
+    this.userDataService.addToFollowing(Number.parseInt(this.id), this.user.id);
+    this.userDataService.addToFollowers(this.user.id, Number.parseInt(this.id));
+    this.follower = true;
+  }
 
+  unfollowClicked() {
+    this.userDataService.removeFromFollowing(Number.parseInt(this.id), this.user.id);
+    this.userDataService.removeFromFollowers(this.user.id, Number.parseInt(this.id));
+    this.follower = false;
+  }
+
+  youTweetsClicked() {
+    this.displayTweets = this.yourTweets;
+    this.displayTweetType = "your";
   }
 
   youLikesClicked() {
-
+    this.displayTweets = this.likedTweets;
+    this.displayTweetType = "likes";
   }
 
   youRetweetsClicked() {
-
+    this.displayTweets = this.retweetedTweets;
+    this.displayTweetType = "retweets";
   }
 
 }
