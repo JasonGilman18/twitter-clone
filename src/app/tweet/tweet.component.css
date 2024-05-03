@@ -15,7 +15,8 @@
 }
 
 #textArea {
-    height: 7vh;
+    min-height: 5vh;
+    max-height: 11vh;
 }
 
 #actionArea {
