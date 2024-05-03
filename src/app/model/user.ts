@@ -10,6 +10,7 @@ export class User {
     public bio: string;
     public followerCount: number;
     public followingCount: number;
+    public tweets: number[];
     public likedTweets: number[];
     public retweets: number[];
 

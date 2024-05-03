@@ -9,6 +9,6 @@ export const routes: Routes = [
     {path: '', component: LandingComponent},
     {path: 'sign-in', component: SigninComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'profile/:userId', component: ProfileComponent},
-    {path: 'feed/:userId', component: FeedComponent}
+    {path: ':id/profile/:userId', component: ProfileComponent},
+    {path: ':userId/feed', component: FeedComponent}
 ];

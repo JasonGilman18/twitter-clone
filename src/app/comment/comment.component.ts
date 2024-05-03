@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-comment',
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLinkActive, RouterLink],
-  inputs: ["comment"],
+  inputs: ["comment", "user"],
   providers: [UserDataService],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.css'
@@ -18,6 +18,7 @@ export class CommentComponent implements OnInit {
 
   comment: CommentDetails;
   commentAuthor: User;
+  user: User;
 
   constructor(
     private router: Router,

@@ -1,6 +1,50 @@
 <div class="container-fluid" id="mainContainer">
+    <div class="container" id="profileContainer">
+        <button (click)="editClicked()" class="iconButton" id="editButton" [ngStyle]="{display: editMode || !profileIsUsers ? 'none' : 'block'}"><i class="fa fa-edit"></i></button>
+        <button (click)="editClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: profileIsUsers ? 'none' : 'block'}">Follow</button>
+        <div class="container-fluid" id="authorArea">
+            <div class="container" id="authorPhotoArea"></div>
+        </div>
+        <div class="container-fluid" id="profileInfo" [ngStyle]="{display: editMode ? 'none' : 'flex'}">
+            <div class="container" id="follwerArea">
+                <p>{{user.followerCount}}&nbsp;&nbsp;<b>followers</b></p>
+                <p>{{user.followingCount}}&nbsp;&nbsp;<b>following</b></p>
+            </div>
+            <h1><b>{{user.firstName + " " + user.lastName}}</b></h1>
+            <h4>{{user.bio}}</h4>
+        </div>
+        <div class="container-fluid" id="editProfileInfo" [ngStyle]="{display: editMode ? 'flex' : 'none'}">
+            <form #profileForm="ngForm" (ngSubmit)="editSubmit()" class="needs-validated">
+                <div class="form-group">
+                    <label for="editFirstName"><h5>First Name:</h5></label>
+                    <input type="text" class="form-control" placeholder="Jane" id="firstNameInput" required [(ngModel)]="editFirstName" name="editFirstName">
+                    <div *ngIf="firstNameError" class="container" id="firstNameError">First Name is Required</div>
+                </div>
+                <div class="form-group">
+                    <label for="editLastName"><h5>Last Name:</h5></label>
+                    <input type="text" class="form-control" placeholder="Doe" id="lastNameInput" required [(ngModel)]="editLastName" name="editLastName">
+                    <div *ngIf="lastNameError" class="container" id="lastNameError">Last Name is Required</div>
+                </div>
+                <div class="form-group">
+                    <label for="editBio"><h5>Bio:</h5></label>
+                    <textarea rows="4" class="form-control" placeholder="Tell us a bit about you..." id="bioInput" [(ngModel)]="editBio" name="editBio"></textarea>
+                </div>
+                <div class="container" [ngStyle]="{display: 'flex', justifyContent: 'space-around'}">
+                    <div class="container-fluid" id="buttonContainer">
+                        <button type="button" class="btn btn-primary" (click)="editCancel()">Cancel</button>
+                    </div>
+                    <div class="container-fluid" id="buttonContainer">
+                        <button type="submit" class="btn btn-primary" (click)="editSubmit()">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="container" id="boxContainer">
-        profile
+        <button (click)="youTweetsClicked()" class="iconButton" id="yourTweetsButton"><i class="fa fa-user"></i></button>
+        <button (click)="youLikesClicked()" class="iconButton" id="yourLikesButton"><i class="fa fa-heart"></i></button>
+        <button (click)="youRetweetsClicked()" class="iconButton" id="yourRetweetsButton"><i class="fa fa-retweet"></i></button>
+        <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet" [user]="user"></app-tweet>
     </div>
 </div>
 

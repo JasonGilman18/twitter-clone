@@ -20,4 +20,14 @@ export class UserDataService {
     addUser(newUser: User) {
         UserDataService.users.push(newUser);
     }
+
+    editUser(id: number, newFirstName: string, newLastName: string, newBio: string) {
+        UserDataService.users.forEach(user => {
+            if (user.id == id) {
+                user.firstName = newFirstName;
+                user.lastName = newLastName;
+                user.bio = newBio;
+            }
+        })
+    }
 }

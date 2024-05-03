@@ -39,7 +39,7 @@ export class SigninComponent {
     if (!this.emailAddressError && !this.passwordError) {
       this.userDataService.getUsers().forEach((user) => {
         if (user.email == this.emailAddress && user.password == this.password) {
-          this.router.navigate(["feed", user.id]);
+          this.router.navigate([user.id, "feed"]);
         }
       });
       this.loginError = true;  
