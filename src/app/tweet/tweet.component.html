@@ -1,20 +1,20 @@
 <div  class="card-body">
     <div class="container-fluid" id="authorArea">
         <div class="container" id="authorPhotoArea"></div>
-        <h5 id="authorName"><b>{{author.firstName + " " + author.lastName}}</b></h5>
+        <a routerLink="{{'/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{user.firstName + " " + user.lastName}}</h5></a>
     </div>
     <div class="container-fluid" id="textArea"><p>{{tweet.text}}</p></div>
     <div class="container-fluid" id="actionArea">
         <div class="actionContainer">
-            <button [ngStyle]="{background: userLikes ? 'lightblue': 'white'}" (click)="likeClicked()">{{userLikes ? "Liked" : "Like"}}</button>
+            <button (click)="likeClicked()" class="iconButton"><i [ngStyle]="{color: userLikes ? 'red': 'lightgrey'}" class="fa fa-heart"></i></button>
             <p class="count">{{tweet.likes}}</p>
         </div>
         <div class="actionContainer">
-            <button [ngStyle]="{background: userRetweets ? 'lightblue': 'white'}" (click)="retweetClicked()">{{userRetweets ? "Retweeted" : "Retweet"}}</button>
+            <button (click)="retweetClicked()" class="iconButton"><i [ngStyle]="{color: userRetweets ? 'lightblue': 'lightgrey'}" class="fa fa-retweet"></i></button>
             <p class="count">{{tweet.retweets}}</p>
         </div>
         <div class="actionContainer">
-            <button (click)="commentsClicked()">Comments</button>
+            <button (click)="commentsClicked()" class="iconButton"><i [ngStyle]="{color: commentsOpen ? 'grey': 'lightgrey'}" class="fa fa-comments"></i></button>
             <p class="count">{{comments.length}}</p>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <form #commentForm="ngForm" (ngSubmit)="commentSubmit()" class="needs-validated" id="formContainer">
                 <input type="text" class="form-control" placeholder="..." id="commentInput" required [(ngModel)]="commentInput" name="commentInput">
-                <button type="submit" (click)="commentSubmit()">Send</button>
+                <button class="iconButton" id="sendButton" type="submit" (click)="commentSubmit()"><i class="fa fa-arrow-circle-up"></i></button>
             </form>
         </div>
     </div>

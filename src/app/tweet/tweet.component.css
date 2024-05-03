@@ -80,3 +80,18 @@ button {
     height: calc(1.5rem + 2px);
     margin-right: .5rem;
 }
+
+.iconButton {
+    border: none;
+    box-shadow: none;
+    background-color: whitesmoke;
+    z-index: 10;
+}
+
+#sendButton {
+    color: grey;
+}
+
+#sendButton:hover {
+    color: lightblue;
+}

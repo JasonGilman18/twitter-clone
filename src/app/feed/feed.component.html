@@ -3,7 +3,7 @@
         <div class="container" id="headerContainer">
             <div class="container" id="authorContainer">
                 <div class="container" id="authorPhotoArea"></div>
-                <a routerLink="{{'/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>author name</h5></a>
+                <a routerLink="{{'/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{user.firstName + " " + user.lastName}}</h5></a>
             </div>
             <div class="container" id="titleContainer">
                 <h1 id="feedTitle">Your Feed</h1>

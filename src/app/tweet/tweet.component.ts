@@ -27,6 +27,7 @@ export class TweetComponent implements OnInit {
   userLikes: boolean;
   userRetweets: boolean;
 
+  commentsOpen: boolean = false;
   commentInput: string = "";
 
   @ViewChild('commentsBox')
@@ -72,6 +73,7 @@ export class TweetComponent implements OnInit {
   }
 
   commentsClicked() {
+    this.commentsOpen = !this.commentsOpen;
     if (this.commentsBoxDom.nativeElement.style.display == "none")
       this.commentsBoxDom.nativeElement.style.display = "grid";
     else
