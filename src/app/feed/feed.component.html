@@ -9,13 +9,17 @@
                 <h1 id="feedTitle">Your Feed</h1>
             </div>
             <div class="container" id="logoutContainer">
+                <div class="container" id="newTweetBox">
+                    <input type="text" placeholder="New Tweet">
+                    <button>Tweet</button>
+                </div>
                 <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><h5>Logout</h5></a>
             </div>
         </div>
     </div>
     <div class="container-fluid" id="feedContainer">
         <div class="container" id="boxContainer">
-            <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
+            <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet" [user]="user"></app-tweet>
         </div>
     </div>
 </div>

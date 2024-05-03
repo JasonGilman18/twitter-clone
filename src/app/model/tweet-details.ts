@@ -1,4 +1,4 @@
-import { Comment } from "./comment";
+import { CommentDetails } from "./comment-details";
 
 export class TweetDetails {
 
@@ -9,7 +9,7 @@ export class TweetDetails {
     public text: string;
     public likes: number;
     public retweets: number;
-    public comments: Comment[];
+    public comments: CommentDetails[];
 
 
     constructor(
@@ -24,6 +24,10 @@ export class TweetDetails {
       this.likes = 0;
       this.retweets = 0;
       this.comments = [];
+    }
+
+    addComment(newComment: CommentDetails) {
+      this.comments.push(newComment);
     }
   
   }

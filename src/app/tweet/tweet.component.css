@@ -3,7 +3,7 @@
     border-radius: 5px;
     min-height: 10vh;
     padding-bottom: .8rem; 
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 #authorArea {
@@ -19,9 +19,10 @@
 }
 
 #actionArea {
+    margin: 0px;
     min-height: 1vh;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
 }
 
 #authorPhotoArea {
@@ -35,4 +36,47 @@
 
 #authorName {
     margin: 0px;
+}
+
+.count {
+    margin: 0px;
+    width: 2rem;
+    margin-left: .5rem;
+    margin-top: 3px;
+}
+
+.actionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border-radius: 20px;
+    border-color: lightblue;
+}
+
+#commentsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#commentsBox {
+    background-color: whitesmoke;
+    height: 18vh;
+    width: 90%;
+    margin-top: 0px;
+    border-radius: 0px 0px 5px 5px;
+    grid-template-rows: auto 3vh;
+    padding-top: .75rem;
+}
+
+#formContainer {
+    display: flex;
+}
+
+#commentInput {
+    height: calc(1.5rem + 2px);
+    margin-right: .5rem;
 }

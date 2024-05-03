@@ -10,7 +10,8 @@ export class User {
     public bio: string;
     public followerCount: number;
     public followingCount: number;
-
+    public likedTweets: number[];
+    public retweets: number[];
 
     constructor(
       public tfistName: string,
@@ -29,6 +30,8 @@ export class User {
       this.bio = tbio;
       this.followerCount = 0;
       this.followingCount = 0;
+      this.likedTweets = [];
+      this.retweets = [];
     }
   
   }

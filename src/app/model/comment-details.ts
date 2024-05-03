@@ -1,4 +1,4 @@
-export class Comment {
+export class CommentDetails {
 
     private static id_seq = 0;
 
@@ -11,8 +11,8 @@ export class Comment {
         public tauthorId: number,
         public ttext: string
     ) {
-      this.id = Comment.id_seq;
-      Comment.id_seq ++;
+      this.id = CommentDetails.id_seq;
+      CommentDetails.id_seq ++;
 
       this.authorId = tauthorId;
       this.text = ttext;

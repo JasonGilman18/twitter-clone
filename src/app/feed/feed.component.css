@@ -12,7 +12,7 @@
     padding: 2rem;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 35% 30% 35%;
 }
 
 #authorContainer {
@@ -47,7 +47,7 @@
 #logoutContainer {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 #feedContainer {
@@ -64,4 +64,19 @@
     position: relative;
     overflow-y: auto;
     border-radius: 5px;
+}
+
+#newTweetBox {
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem;
+    background-color: aliceblue;
+    border-radius: 5px;
+    display: flex;
+    margin-right: 1rem;
+}
+
+#newTweetBox input {
+    width: 6rem;
+    margin-right: 1rem;
 }
