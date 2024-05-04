@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserDataService } from '../model/user.service';
 import { User } from '../model/user';
@@ -37,13 +37,13 @@ export class RegisterComponent {
     this.lastNameError = false;
     this.passwordError = false;
 
-    if (this.emailAddress == "")
+    if (this.emailAddress == "" || !this.emailIsValid(this.emailAddress))
       this.emailAddressError = true;
-    if (this.firstName == "")
+    if (this.firstName == "" || this.firstName.length > 20)
       this.firstNameError = true;
-    if (this.lastName == "")
+    if (this.lastName == "" || this.lastName.length > 20)
       this.lastNameError = true;
-    if (this.password == "")
+    if (this.password == "" || !this.passwordIsValid(this.password))
       this.passwordError = true;
 
     if (!this.emailAddressError && !this.firstNameError && !this.lastNameError && !this.passwordError) {
@@ -51,6 +51,14 @@ export class RegisterComponent {
       this.userDataService.addUser(newUser);
       this.router.navigate(["sign-in"]);
     }
+  }
+
+  emailIsValid(email: string) {
+    return email.match(/^\S+@\S+$/);
+  }
+
+  passwordIsValid(password: string) {
+    return password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/);
   }
 
 }

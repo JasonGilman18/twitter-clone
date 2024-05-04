@@ -75,9 +75,9 @@ export class ProfileComponent implements OnInit {
   }
 
   editSubmit() {
-    if (this.editFirstName == "")
+    if (this.editFirstName == "" || this.editFirstName.length > 20)
       this.firstNameError = true;
-    if (this.editLastName == "")
+    if (this.editLastName == "" || this.editLastName.length > 20)
       this.lastNameError = true;
 
     if (!this.firstNameError && !this.lastNameError) {

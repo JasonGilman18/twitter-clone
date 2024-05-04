@@ -10,12 +10,12 @@
                 <div class="form-group">
                     <label for="firstNameInput"><h5>First Name:</h5></label>
                     <input type="text" class="form-control" placeholder="Jane" id="firstNameInput" required [(ngModel)]="firstName" name="firstName">
-                    <div *ngIf="firstNameError" class="container" id="firstNameError">First Name is Required</div>
+                    <div *ngIf="firstNameError" class="container" id="firstNameError">Valid First Name is Required</div>
                 </div>
                 <div class="form-group">
                     <label for="lastNameInput"><h5>Last Name:</h5></label>
                     <input type="text" class="form-control" placeholder="Doe" id="lastNameInput" required [(ngModel)]="lastName" name="lastName">
-                    <div *ngIf="lastNameError" class="container" id="lastNameError">Last Name is Required</div>
+                    <div *ngIf="lastNameError" class="container" id="lastNameError">Valid Last Name is Required</div>
                 </div>
                 <div class="form-group">
                     <label for="bioInput"><h5>Initial Bio:</h5></label>
@@ -24,12 +24,12 @@
                 <div class="form-group">
                     <label for="emailInput"><h5>Email Address:</h5></label>
                     <input type="email" class="form-control" placeholder="email" id="emailInput" required [(ngModel)]="emailAddress" name="emailAddress">
-                    <div *ngIf="emailAddressError" class="container" id="emailError">Email Address is Required</div>
+                    <div *ngIf="emailAddressError" class="container" id="emailError">Valid Email Address is Required</div>
                 </div>
                 <div class="form-group">
                     <label for="passwordInput"><h5>Password:</h5></label>
                     <input type="password" class="form-control" placeholder="password" id="passwordInput" required [(ngModel)]="password" name="password">
-                    <div *ngIf="passwordError" class="container" id="passwordError">Password is Required</div>
+                    <div *ngIf="passwordError" class="container" id="passwordError">Valid Password is Required</div>
                 </div>
                 <div class="container-fluid" id="buttonContainer">
                     <button type="submit" class="btn btn-primary" id="submitButton" (click)="registerSubmit()">Create Account</button>
