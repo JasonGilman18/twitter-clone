@@ -14,7 +14,7 @@ import { CommentComponent } from '../comment/comment.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLinkActive, RouterLink, FormsModule, CommentComponent],
   providers: [UserDataService, TweetDataService],
-  inputs: ["tweet", "user"],
+  inputs: ["tweet", "loggedUser"],
   templateUrl: './tweet.component.html',
   styleUrl: './tweet.component.css'
 })
@@ -22,7 +22,7 @@ export class TweetComponent implements OnInit {
   
   tweet: TweetDetails;
   comments: CommentDetails[];
-  user: User;
+  loggedUser: User;
   author: User;
   userLikes: boolean;
   userRetweets: boolean;
@@ -44,32 +44,34 @@ export class TweetComponent implements OnInit {
     let foundUser = this.userDataService.getUser(this.tweet.authorId);
     if (foundUser != undefined) {
       this.author = foundUser;
+      this.userLikes = this.loggedUser.likedTweets.includes(this.tweet.id);
+      this.userRetweets = this.loggedUser.retweets.includes(this.tweet.id);
     } else
       this.router.navigate([""]);
   }
 
   likeClicked() {
-    let i = this.user.likedTweets.findIndex(like => like == this.tweet.id);
+    let i = this.loggedUser.likedTweets.findIndex(like => like == this.tweet.id);
     if (i != -1) {
-      this.user.likedTweets.splice(i, 1);
+      this.loggedUser.likedTweets.splice(i, 1);
       this.tweet.likes--;
     } else {
-      this.user.likedTweets.push(this.tweet.id);
+      this.loggedUser.likedTweets.push(this.tweet.id);
       this.tweet.likes++;
     }
-    this.userLikes = this.user.likedTweets.includes(this.tweet.id);
+    this.userLikes = this.loggedUser.likedTweets.includes(this.tweet.id);
   }
 
   retweetClicked() {
-    let i = this.user.retweets.findIndex(retweet => retweet == this.tweet.id);
+    let i = this.loggedUser.retweets.findIndex(retweet => retweet == this.tweet.id);
     if (i != -1) {
-      this.user.retweets.splice(i, 1);
+      this.loggedUser.retweets.splice(i, 1);
       this.tweet.retweets--;
     } else {
-      this.user.retweets.push(this.tweet.id);
+      this.loggedUser.retweets.push(this.tweet.id);
       this.tweet.retweets++;
     }
-    this.userRetweets = this.user.retweets.includes(this.tweet.id);
+    this.userRetweets = this.loggedUser.retweets.includes(this.tweet.id);
   }
 
   commentsClicked() {
@@ -83,7 +85,7 @@ export class TweetComponent implements OnInit {
   commentSubmit() {
     if (this.commentInput != "") {
       if (this.commentInput.length <= 280) {
-        let newComment: CommentDetails = new CommentDetails(this.user.id, this.commentInput);
+        let newComment: CommentDetails = new CommentDetails(this.loggedUser.id, this.commentInput);
         this.tweet.addComment(newComment);
         this.commentInput = "";
       }

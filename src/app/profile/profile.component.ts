@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   
   id: string;
   user: User;
+  loggedUser: User;
   profileIsUsers: boolean;
   follower: boolean;
 
@@ -50,6 +51,7 @@ export class ProfileComponent implements OnInit {
     else {
       this.user = this.userDataService.getUser(Number.parseInt(param))!;
       this.id = this.route.snapshot.paramMap.get("id")!;
+      this.loggedUser = this.userDataService.getUser(Number.parseInt(this.id))!;
       this.profileIsUsers = Number.parseInt(this.id) == this.user.id;
       if (this.profileIsUsers)
         this.follower = false;

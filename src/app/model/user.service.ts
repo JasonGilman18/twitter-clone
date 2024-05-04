@@ -5,8 +5,9 @@ import { User } from "./user";
 export class UserDataService {
 
     private static users: User[] = [
-        new User("admin", "admin", "admin@admin.com", "password", ""),
-        new User("Jason", "Gilman", "jason.gilman@dell.com", "password", "My name is Jason")
+        new User("Jason", "Gilman", "jason.gilman@dell.com", "passworD*", "My name is Jason"),
+        new User("John", "Doe", "jd@gmail.com", "passworD*", "I like bikes."),
+        new User("Jane", "Doe", "janed@gmail.com", "passworD*", "I like to cook.")
     ];
     
     getUsers() {

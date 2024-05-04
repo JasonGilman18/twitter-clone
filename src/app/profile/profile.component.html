@@ -1,5 +1,6 @@
 <div class="container-fluid" id="mainContainer">
     <div class="container" id="profileContainer">
+        <a id="backButton" routerLink="{{'/' + id + '/feed'}}" routerLinkActive="active" ariaCurrentWhenActive="page">&lt;&nbsp;back</a>
         <button (click)="editClicked()" class="iconButton" id="editButton" [ngStyle]="{display: editMode || !profileIsUsers ? 'none' : 'block'}"><i class="fa fa-edit"></i></button>
         <button (click)="followClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: profileIsUsers||follower ? 'none' : 'block'}">Follow</button>
         <button (click)="unfollowClicked()" class="btn btn-primary" id="followButton" [ngStyle]="{display: !profileIsUsers&&follower ? 'block' : 'none'}">Unfollow</button>
@@ -45,7 +46,7 @@
         <button (click)="youTweetsClicked()" class="iconButton" id="yourTweetsButton" [ngStyle]="{color: displayTweetType=='your'?'grey':'black'}"><i class="fa fa-user"></i></button>
         <button (click)="youLikesClicked()" class="iconButton" id="yourLikesButton" [ngStyle]="{color: displayTweetType=='likes'?'grey':'black'}"><i class="fa fa-heart"></i></button>
         <button (click)="youRetweetsClicked()" class="iconButton" id="yourRetweetsButton" [ngStyle]="{color: displayTweetType=='retweets'?'grey':'black'}"><i class="fa fa-retweet"></i></button>
-        <app-tweet *ngFor="let tweet of displayTweets" [tweet]="tweet" [user]="user"></app-tweet>
+        <app-tweet *ngFor="let tweet of displayTweets" [tweet]="tweet" [loggedUser]="loggedUser"></app-tweet>
     </div>
 </div>
 

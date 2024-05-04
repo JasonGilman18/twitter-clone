@@ -1,7 +1,7 @@
 <div  class="card-body">
     <div class="container-fluid" id="authorArea">
         <div class="container" id="authorPhotoArea"></div>
-        <a routerLink="{{'/' + user.id + '/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{user.firstName + " " + user.lastName}}</h5></a>
+        <a routerLink="{{'/' + loggedUser.id + '/profile/' + author.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{author.firstName + " " + author.lastName}}</h5></a>
     </div>
     <div class="container-fluid" id="textArea"><p style="overflow-wrap: break-word;">{{tweet.text}}</p></div>
     <div class="container-fluid" id="actionArea">
@@ -22,7 +22,7 @@
 <div id="commentsContainer">
     <div #commentsBox id="commentsBox" style="display: none;">
         <div class="container-fluid" style="overflow-x: hidden;overflow-y: auto;">
-            <app-comment *ngFor="let comment of comments" [comment]="comment" [user]="user"/>
+            <app-comment *ngFor="let comment of comments" [comment]="comment" [user]="loggedUser"/>
         </div>
         <div class="container-fluid">
             <form #commentForm="ngForm" (ngSubmit)="commentSubmit()" class="needs-validated" id="formContainer">

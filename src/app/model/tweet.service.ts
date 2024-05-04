@@ -5,15 +5,12 @@ import { TweetDetails } from "./tweet-details";
 export class TweetDataService {
 
     private static tweets: TweetDetails[] = [
-        new TweetDetails(1, "Hello, World!"),
-        new TweetDetails(1, "My second tweet"),
-        new TweetDetails(1, "My 3 tweet"),
-        new TweetDetails(1, "My 4 tweet"),
-        new TweetDetails(1, "My 5 tweet"),
-        new TweetDetails(1, "My 6 tweet"),
-        new TweetDetails(1, "My 7 tweet"),
-        new TweetDetails(1, "My 8 tweet"),
-        new TweetDetails(1, "My 9 tweet")
+        new TweetDetails(0, "Hello, World!"),
+        new TweetDetails(0, "My second tweet"),
+        new TweetDetails(1, "I rode my bike!"),
+        new TweetDetails(1, "Can't wait for tomorrow"),
+        new TweetDetails(2, "What should i cook?"),
+        new TweetDetails(2, "Had a great dinner")
     ];
     
     getTweets() {
