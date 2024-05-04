@@ -99,7 +99,6 @@ export class ProfileComponent implements OnInit {
   onFileChanged(event: any) {
     const files = event.target.files;
     const reader = new FileReader();
-    //this.imagePath = files;
     reader.readAsDataURL(files[0]); 
     reader.onload = (_event) => { 
         this.editProfileImg = reader.result; 

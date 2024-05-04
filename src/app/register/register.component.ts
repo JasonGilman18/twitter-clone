@@ -64,8 +64,13 @@ export class RegisterComponent {
     return password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/);
   }
 
-  fileUpload(event: any) {
-    console.log(event);
+  onFileChanged(event: any) {
+    const files = event.target.files;
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.profileImg = reader.result; 
+    }
   }
 
 }

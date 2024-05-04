@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fileInput"><h5>Profile Photo:</h5></label>
-                    <input type="file" id="fileInput" class="form-control" name="profileImg" [(ngModel)]="profileImg">
+                    <input type="file" id="fileInput" class="form-control" (change)="onFileChanged($event)">
                 </div>
                 <div class="form-group">
                     <label for="bioInput"><h5>Initial Bio:</h5></label>
