@@ -5,9 +5,9 @@ import { User } from "./user";
 export class UserDataService {
 
     private static users: User[] = [
-        new User("Jason", "Gilman", "jason.gilman@dell.com", "passworD*", "My name is Jason"),
-        new User("John", "Doe", "jd@gmail.com", "passworD*", "I like bikes."),
-        new User("Jane", "Doe", "janed@gmail.com", "passworD*", "I like to cook.")
+        new User("Jason", "Gilman", undefined, "jason.gilman@dell.com", "passworD*", "My name is Jason"),
+        new User("John", "Doe", undefined, "jd@gmail.com", "passworD*", "I like bikes."),
+        new User("Jane", "Doe", undefined, "janed@gmail.com", "passworD*", "I like to cook.")
     ];
     
     getUsers() {
@@ -22,11 +22,12 @@ export class UserDataService {
         UserDataService.users.push(newUser);
     }
 
-    editUser(id: number, newFirstName: string, newLastName: string, newBio: string) {
+    editUser(id: number, newFirstName: string, newLastName: string, newProfileImg: any, newBio: string) {
         UserDataService.users.forEach(user => {
             if (user.id == id) {
                 user.firstName = newFirstName;
                 user.lastName = newLastName;
+                user.profileImg = newProfileImg;
                 user.bio = newBio;
             }
         });

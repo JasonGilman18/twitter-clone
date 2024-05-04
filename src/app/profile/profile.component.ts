@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   editMode: boolean;
   editFirstName: string;
   editLastName: string;
+  editProfileImg: any;
   editBio: string;
   firstNameError: boolean;
   lastNameError: boolean;
@@ -83,7 +84,7 @@ export class ProfileComponent implements OnInit {
       this.lastNameError = true;
 
     if (!this.firstNameError && !this.lastNameError) {
-      this.userDataService.editUser(Number.parseInt(this.id), this.editFirstName, this.editLastName, this.editBio);
+      this.userDataService.editUser(Number.parseInt(this.id), this.editFirstName, this.editLastName, this.editProfileImg, this.editBio);
       this.editMode = false;
       this.router.navigate(["", this.id, "profile", this.id]);
     } else {
@@ -93,6 +94,16 @@ export class ProfileComponent implements OnInit {
 
   editCancel() {
     this.editMode = false;
+  }
+
+  onFileChanged(event: any) {
+    const files = event.target.files;
+    const reader = new FileReader();
+    //this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.editProfileImg = reader.result; 
+    }
   }
 
   followClicked() {

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserDataService } from '../model/user.service';
 import { User } from '../model/user';
@@ -20,6 +20,7 @@ export class RegisterComponent {
   lastName: string = "";
   bio: string = "";
   password: string = "";
+  profileImg: any;
 
   emailAddressError: boolean = false;
   firstNameError: boolean = false;
@@ -32,6 +33,8 @@ export class RegisterComponent {
   ) {}
 
   registerSubmit() {
+    console.log(this.profileImg);
+
     this.emailAddressError = false;
     this.firstNameError = false;
     this.lastNameError = false;
@@ -47,7 +50,7 @@ export class RegisterComponent {
       this.passwordError = true;
 
     if (!this.emailAddressError && !this.firstNameError && !this.lastNameError && !this.passwordError) {
-      var newUser: User = new User(this.firstName, this.lastName, this.emailAddress, this.password, this.bio);
+      var newUser: User = new User(this.firstName, this.lastName, this.profileImg, this.emailAddress, this.password, this.bio);
       this.userDataService.addUser(newUser);
       this.router.navigate(["sign-in"]);
     }
@@ -59,6 +62,10 @@ export class RegisterComponent {
 
   passwordIsValid(password: string) {
     return password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/);
+  }
+
+  fileUpload(event: any) {
+    console.log(event);
   }
 
 }

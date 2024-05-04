@@ -1,6 +1,8 @@
 <div  class="card-body">
     <div class="container-fluid" id="authorArea">
-        <div class="container" id="authorPhotoArea"></div>
+        <div class="container" id="authorPhotoArea">
+            <img src="{{author.profileImg}}" [ngStyle]="{display: author.profileImg==undefined?'none':'block'}" style="height:3.5rem;width:3.5rem;border-radius:100%;">
+        </div>
         <a routerLink="{{'/' + loggedUser.id + '/profile/' + author.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{author.firstName + " " + author.lastName}}</h5></a>
     </div>
     <div class="container-fluid" id="textArea"><p style="overflow-wrap: break-word;">{{tweet.text}}</p></div>

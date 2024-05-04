@@ -5,6 +5,7 @@ export class User {
     public id: number;
     public firstName: string;
     public lastName: string;
+    public profileImg: any;
     public email: string;
     public password: string;
     public bio: string;
@@ -17,6 +18,7 @@ export class User {
     constructor(
       public tfistName: string,
       public tlastName: string,
+      public tprofileImg: any,
       public temail: string,
       public tpassword: string,
       public tbio: string
@@ -26,6 +28,7 @@ export class User {
 
       this.firstName = tfistName;
       this.lastName = tlastName;
+      this.profileImg = tprofileImg;
       this.email = temail;
       this.password = tpassword;
       this.bio = tbio;

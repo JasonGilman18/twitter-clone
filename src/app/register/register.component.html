@@ -18,6 +18,10 @@
                     <div *ngIf="lastNameError" class="container" id="lastNameError">Valid Last Name is Required</div>
                 </div>
                 <div class="form-group">
+                    <label for="fileInput"><h5>Profile Photo:</h5></label>
+                    <input type="file" id="fileInput" class="form-control" name="profileImg" [(ngModel)]="profileImg">
+                </div>
+                <div class="form-group">
                     <label for="bioInput"><h5>Initial Bio:</h5></label>
                     <textarea rows="4" class="form-control" placeholder="Tell us a bit about you..." id="bioInput" [(ngModel)]="bio" name="bio"></textarea>
                 </div>

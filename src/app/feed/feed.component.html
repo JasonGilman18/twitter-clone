@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="container" id="headerContainer">
             <div class="container" id="authorContainer">
-                <div class="container" id="authorPhotoArea"></div>
+                <div class="container" id="authorPhotoArea">
+                    <img src="{{user.profileImg}}" style="height:5rem;width:5rem;border-radius:100%;">
+                </div>
                 <a routerLink="{{'/' + user.id + '/profile/' + user.id}}" routerLinkActive="active" ariaCurrentWhenActive="page" id="authorName"><h5>{{user.firstName + " " + user.lastName}}</h5></a>
             </div>
             <div class="container" id="titleContainer">
